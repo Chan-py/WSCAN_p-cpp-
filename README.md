@@ -19,24 +19,23 @@ You can then execute it with the desired parameters.
 
 ## Parameters for Experiment
 
-- eps : Epsilon threshold parameter. (Double)
+- eps : Similarity threshold parameter.
 
-- mu : Minimum number of similar neighbors required. (Integer)
+- mu : Minimum number of similar neighbors required.
 
-- gamma : Gamma threshold parameter. (Double)
+- gamma : Balance parameter.
 
-- similarity : Name of similarity function to use.  
-  (Resolved internally via `ResolveSimilarity()`)
+- similarity : Name of similarity function to use.
 
-- network : Path or name of the dataset file.
+- network : Path of the dataset folder. The folder has to have the file named `network.dat`.
 
 ---
 
 ### Edge Perturbation Parameters
 
-- edge_p : Edge perturbation probability. (Double)
+- edge_p : Percentage of edges to perturb.
 
-- delta_p : Delta perturbation probability. (Double)
+- delta_p : Percentage for delta (delta is the parameter for perturbing edge weight).
 
 - weight_method : Method to compute edge weight.  
   Options:
@@ -50,7 +49,7 @@ You can then execute it with the desired parameters.
 - parallel : Enable parallel mode.  
   (Boolean flag — no value required. Just include `--parallel`.)
 
-- threads : Number of threads to use in parallel mode. (Integer)
+- threads : Number of threads to use in parallel mode.s
 
 ---
 
@@ -71,27 +70,27 @@ You can then execute it with the desired parameters.
 
 ### Basic Usage
 ```
-./wscan --network karate --similarity WSCAN++ --eps 0.2 --mu 8 --gamma 0.7
+./wscan --network karate --similarity WSCAN++ --eps 0.2 --mu 8 --gamma 0.7 --output_file result.csv
 ```
 
 ---
 
 ### With Edge Perturbation
 ```
-./wscan --network actor-collaboration \
+./wscan --network sociopattern_hospital \
         --similarity WSCAN++ \
         --eps 0.2 --mu 8 --gamma 0.7 \
-        --edge_p 0.1 --delta_p 0.05 --weight_method avg
+        --edge_p 0.1 --delta_p 0.05 --weight_method max --output_file result.csv
 ```
 
 ---
 
 ### Parallel Execution
 ```
-./wscan --network actor-collaboration \
+./wscan --network sociopattern_primaryschool \
         --similarity WSCAN++ \
         --eps 0.2 --mu 8 --gamma 0.7 \
-        --parallel --threads 4
+        --parallel --threads 4 --output_file result.csv
 ```
 
 ---
@@ -101,7 +100,7 @@ You can then execute it with the desired parameters.
 ./wscan --network synthetic_dataset \
         --eps 0.2 --mu 8 --gamma 0.7 \
         --synthetic \
-        --output_file result.csv
+        --output_file synthetic_result.csv
 ```
 
 ---
@@ -109,13 +108,9 @@ You can then execute it with the desired parameters.
 ## Notes
 
 1. Ground-truth Detection  
-   The program automatically checks whether the dataset has ground-truth labels by verifying the existence of a `labels.dat` file in the dataset folder. No additional argument is required.
+   The program automatically checks whether the dataset has ground-truth labels by verifying the existence of a `labels.dat` file in the dataset folder (If synthetic, `community.dat`). No additional argument is required.
 
 2. Node Indexing  
    Node indices must start from 1.  
    Although non-consecutive numbering does not cause runtime errors, memory allocation is based on the maximum node ID.  
    Therefore, non-sequential numbering may result in unnecessary memory usage.
-
-3. Results File  
-   The current `results.csv` contains simple test results.  
-   Parallel execution appears to work correctly.
