@@ -4,12 +4,14 @@ Instruction for experiment
 WSCAN is implemented in C++ and compiled via the provided `Makefile`.
 
 After cloning the repository, simply run:
-
+```
 make
+```
 
 This will generate an executable file named:
-
+```
 wscan
+```
 
 You can then execute it with the desired parameters.
 
@@ -68,35 +70,39 @@ You can then execute it with the desired parameters.
 ## Examples
 
 ### Basic Usage
-
+```
 ./wscan --network karate --similarity WSCAN++ --eps 0.2 --mu 8 --gamma 0.7
+```
 
 ---
 
 ### With Edge Perturbation
-
+```
 ./wscan --network actor-collaboration \
         --similarity WSCAN++ \
         --eps 0.2 --mu 8 --gamma 0.7 \
         --edge_p 0.1 --delta_p 0.05 --weight_method avg
+```
 
 ---
 
 ### Parallel Execution
-
+```
 ./wscan --network actor-collaboration \
         --similarity WSCAN++ \
         --eps 0.2 --mu 8 --gamma 0.7 \
         --parallel --threads 4
+```
 
 ---
 
 ### Synthetic Mode with Custom Output File
-
+```
 ./wscan --network synthetic_dataset \
         --eps 0.2 --mu 8 --gamma 0.7 \
         --synthetic \
         --output_file result.csv
+```
 
 ---
 
