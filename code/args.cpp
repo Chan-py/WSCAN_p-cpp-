@@ -19,7 +19,6 @@ static SimilarityFunc ResolveSimilarity(const std::string& name) {
 Args ParseArgs(int argc, char** argv) {
     Args args;
 
-    // 기본 similarity 설정
     args.similarity_func = ResolveSimilarity(args.similarity_name);
 
     for (int i = 1; i < argc; ++i) {
