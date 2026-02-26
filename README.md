@@ -114,3 +114,13 @@ You can then execute it with the desired parameters.
    Node indices must start from 1.  
    Although non-consecutive numbering does not cause runtime errors, memory allocation is based on the maximum node ID.  
    Therefore, non-sequential numbering may result in unnecessary memory usage.
+
+3. Undirected Graph Assumption  
+   The dataset is currently processed in undirected mode.  
+   Therefore, duplicate edges with reversed node order must not appear in the input.  
+   For example, the following two edges must not coexist:
+
+   1 2 5  
+   2 1 5  
+
+   Only one of them should be included in the dataset.
