@@ -1,0 +1,8 @@
+Metric               | Value          
+----------------------------------------
+Total Nodes          | 3438           
+Total Edges          | 88268          
+Average Degree       | 51.3485        
+Max Degree           | 903            
+Average Weight       | 5.1965         
+Max Weight           | 2896.0000      
